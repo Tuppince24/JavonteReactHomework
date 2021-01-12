@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import header from "./compoents/header";
+import search from "./compoents/search"
 
 function App() {
   return (
