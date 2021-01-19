@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import header from "./compoents/header";
-import search from "./compoents/search"
+import header from "./compoents/Header";
+import search from "./compoents/Search"
 
 function App() {
   return (
