@@ -1,27 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
-import header from "./compoents/Header";
-import search from "./compoents/Search"
+import React, { Component } from "react";
+import Header from "./compoents/Header/header";
+import Search from "./compoents/Search/search";
+import Wrapper from "./compoents/Wrapper/wrapper";
+import Table from "./compoents/Table/table";
+import employees from "./employee.json";
+class App extends Component {
+  state = {
+    employees
+  };
 
-function App() {
+  removeEmployee = id => {
+    // Filter this.state.friends for friends with an id not equal to the id being removed
+    const employees = this.state.employees.filter(employee => employee.id !== id);
+    // Set this.state.friends equal to the new friends array
+    this.setState({ employees });
+  };
+
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Wrapper>
+      <Header>Employee List</Header>
+      <Search/>
+      {this.state.employees.map(employee => (
+        <Table
+          removeEmployee={this.removeEmployee}
+          id={employee.id}
+          key={employee.id}
+          name={employee.name}
+          image={employee.image}
+          occupation={employee.occupation}
+          location={employee.location}
+        />
+      ))}
+    </Wrapper>
+  )};
 }
 
 export default App;
