@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import "../../utils/api"
 
 function Table(props) {
     return (
