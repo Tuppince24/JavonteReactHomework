@@ -3,13 +3,14 @@ import Header from "../compoents/Header/header";
 import Search from "../compoents/Search/search";
 import Wrapper from "../compoents/Wrapper/wrapper";
 import Table from "../compoents/Table/table";
-import API from "../utils/api";
+import API from "../utils/API";
 
 class App extends Component {
   state = {
     users: {},
     search: ""
   };
+
 
   searchUser = query => {
     API.search(query)
@@ -26,7 +27,8 @@ class App extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    this.searchMovies(this.state.search);
+    this.searchUser(this.state.search);
+    console.log(this.searchUser);
   }
 
   render(){
@@ -38,17 +40,17 @@ class App extends Component {
         handleInputChange={this.handleInputChange}
         handleFormSubmit={this.handleFormSubmit}
       /> 
-      {this.state.users.image ? (
+      {/* {this.state.users.image ? ( */}
         <Table
-          image={this.state.users.image}
-          name={this.state.usersser.name}
-          phone={this.state.users.phone}
-          email={this.state.users.email}
-          dob={this.state.users.dob}
+          // image={this.state.users.image}
+          // name={this.state.usersser.name}
+          // phone={this.state.users.phone}
+          // email={this.state.users.email}
+          // dob={this.state.users.dob}
         />
-      ): (
-        <Table/>
-      )}
+      {/* ): (
+        <Table/> */}
+      {/* )} */}
     </Wrapper>
   )};
 }
