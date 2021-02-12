@@ -1,16 +1,45 @@
-import React from "react";
+import React, { Component } from "react";
 import Header from "../compoents/Header/header";
 import Search from "../compoents/Search/search";
 import Wrapper from "../compoents/Wrapper/wrapper";
 import EmployeeRow from "../compoents/EmployeeRow/index"
 import employee from "../employee.json"
 
+class App extends Component{
+  state = {
+    result: {},
+    search: ""
+  };
 
-function App() {
+  searchUser = query =>{
+    employee.search(query)
+    .then(res => this.setState({ result: res.data }))
+    .catch(err => console.log(err));
+  }
+
+  handleInputChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  };
+
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+   this.searchUser(this.state.search);
+  };
+
+  render() {
   return (
    <Wrapper>
      <Header>Employee Directory</Header>
-     <Search/>
+     <Search
+     value={this.state.search}
+     handleInputChange={this.handleInputChange}
+     handleFormSubmit={this.handleFormSubmit}
+     />
      <EmployeeRow
         image={employee[0].image}
         name={employee[0].name}
@@ -148,6 +177,7 @@ function App() {
       
    </Wrapper>
   );
+}
 }
 
 export default App;
