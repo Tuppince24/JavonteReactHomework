@@ -1,183 +1,68 @@
 import React, { Component } from "react";
+import Card from "../compoents/Card/CardContainer"
 import Header from "../compoents/Header/header";
-import Search from "../compoents/Search/search";
-import Wrapper from "../compoents/Wrapper/wrapper";
-import EmployeeRow from "../compoents/EmployeeRow/index"
-import employee from "../employee.json"
+import EmployeeRow from "../compoents/EmployeeRow";
+import { Container } from "react-bootstrap"
+// import { Container, Row, Col,  Button , Alert , Breadcrumb, Card, Form } from 'react-bootstrap';
 
-class App extends Component{
-  state = {
-    result: {},
-    search: ""
-  };
-
-  searchUser = query =>{
-    employee.search(query)
-    .then(res => this.setState({ result: res.data }))
-    .catch(err => console.log(err));
-  }
-
-  handleInputChange = event => {
-    const value = event.target.value;
-    const name = event.target.name;
-    this.setState({
-      [name]: value
-    });
-  };
-
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-   this.searchUser(this.state.search);
-  };
-
-  render() {
-  return (
-   <Wrapper>
-     <Header>Employee Directory</Header>
-     <Search
-     value={this.state.search}
-     handleInputChange={this.handleInputChange}
-     handleFormSubmit={this.handleFormSubmit}
-     />
-     <EmployeeRow
-        image={employee[0].image}
-        name={employee[0].name}
-        phone={employee[0].phone}
-        email={employee[0].email}
-        dob={employee[0].dob}
-      />
+function App(){
+  return(
+    <>
+   <Header/>
+   <Container md>
+      <Card/>
       <EmployeeRow
-      image={employee[1].image}
-      name={employee[1].name}
-      phone={employee[1].phone}
-      email={employee[1].email}
-      dob={employee[1].dob}
-      />
-      <EmployeeRow
-        image={employee[2].image}
-        name={employee[2].name}
-        phone={employee[2].phone}
-        email={employee[2].email}
-        dob={employee[2].dob}
-      />
-      <EmployeeRow
-        image={employee[3].image}
-        name={employee[3].name}
-        phone={employee[3].phone}
-        email={employee[3].email}
-        dob={employee[3].dob}
-      />
-      <EmployeeRow
-        image={employee[4].image}
-        name={employee[4].name}
-        phone={employee[4].phone}
-        email={employee[4].email}
-        dob={employee[4].dob}
-      />
-      <EmployeeRow
-        image={employee[5].image}
-        name={employee[5].name}
-        phone={employee[5].phone}
-        email={employee[5].email}
-        dob={employee[5].dob}
-      />
-      <EmployeeRow
-        image={employee[6].image}
-        name={employee[6].name}
-        phone={employee[6].phone}
-        email={employee[6].email}
-        dob={employee[6].dob}
-      />
-      <EmployeeRow
-        iimage={employee[7].image}
-        name={employee[7].name}
-        phone={employee[7].phone}
-        email={employee[7].email}
-        dob={employee[7].dob}
-      />
-      <EmployeeRow
-        image={employee[8].image}
-        name={employee[8].name}
-        phone={employee[8].phone}
-        email={employee[8].email}
-        dob={employee[8].dob}
-      />
-      <EmployeeRow
-        image={employee[9].image}
-        name={employee[9].name}
-        phone={employee[9].phone}
-        email={employee[9].email}
-        dob={employee[9].dob}
-      />
-      <EmployeeRow
-        image={employee[10].image}
-        name={employee[10].name}
-        phone={employee[10].phone}
-        email={employee[10].email}
-        dob={employee[10].dob}
-      />
-      <EmployeeRow
-        image={employee[11].image}
-        name={employee[11].name}
-        phone={employee[11].phone}
-        email={employee[11].email}
-        dob={employee[11].dob}
-      />
-      <EmployeeRow
-        image={employee[12].image}
-        name={employee[12].name}
-        phone={employee[12].phone}
-        email={employee[12].email}
-        dob={employee[12].dob}
-      />
-      <EmployeeRow
-        image={employee[13].image}
-        name={employee[13].name}
-        phone={employee[13].phone}
-        email={employee[13].email}
-        dob={employee[13].dob}
-      />
-      <EmployeeRow
-        image={employee[14].image}
-        name={employee[14].name}
-        phone={employee[14].phone}
-        email={employee[14].email}
-        dob={employee[14].dob}
-      />
-      <EmployeeRow
-        image={employee[15].image}
-        name={employee[15].name}
-        phone={employee[15].phone}
-        email={employee[15].email}
-        dob={employee[15].dob}
-      />
-      <EmployeeRow
-        image={employee[16].image}
-        name={employee[16].name}
-        phone={employee[16].phone}
-        email={employee[16].email}
-        dob={employee[16].dob}
-      />
-      <EmployeeRow
-        image={employee[17].image}
-        name={employee[17].name}
-        phone={employee[17].phone}
-        email={employee[17].email}
-        dob={employee[17].dob}
-      />
-      <EmployeeRow
-        image={employee[18].image}
-        name={employee[18].name}
-        phone={employee[18].phone}
-        email={employee[18].email}
-        dob={employee[18].dob}
-      />
-      
-      
-   </Wrapper>
-  );
-}
+      name="tay"
+      number="xxxxxxxxxx"
+      email="test@test.com"
+      location="123 west wall St"
+      ></EmployeeRow>
+   </Container>
+   
+   </>
+  )
 }
 
 export default App;
+
+{/* <Container>
+   <Form>
+     <Row>
+       <Col md>
+        <Form.Group controlId="formEmail">
+        <Form.Label>Email Address</Form.Label>
+        <Form.Control type="email" placeholder="exemail@porn.com"/>
+        <Form.Text className="text-muted">
+          we will never share your email
+        </Form.Text>
+      </Form.Group>
+       </Col>
+       <Col md>
+        <Form.Group controlId="formPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="email" placeholder="Password"/>
+        <Form.Text className="text-muted">
+          we will never share your Password
+        </Form.Text>
+      </Form.Group>
+       </Col>
+     </Row>
+     
+     <Button variant= "secondary" type="submit"> login </Button>
+   </Form>
+   <Card className="mb-3" style={{background: "grey"}}>
+     <Card.Img style={{height: "100px" , width: "100px"}} />
+     <Card.Body>
+       <Card.Title>this is the Title</Card.Title>
+       <Card.Text>this is my text</Card.Text>
+       <Button variant= "primary"> read more </Button>
+     </Card.Body>
+   </Card>
+   <Breadcrumb>
+    <Breadcrumb.Item>Test</Breadcrumb.Item>
+    <Breadcrumb.Item>Test2</Breadcrumb.Item>
+    <Breadcrumb.Item active="true">Test3</Breadcrumb.Item>
+   </Breadcrumb>
+   <Alert variant= "primary">this is a button</Alert>
+   <Button variant= "danger"> test button </Button>
+   </Container> */}
